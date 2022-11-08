@@ -6,24 +6,22 @@ import { recipes } from "./data.js";
 // list its ingredients in a <ul>.
 
 export default function RecipeList() {
-  const recipeList = recipes.map((item) => {
-    return (
-      <div key={item.id}>
-        <h2>{item.name}</h2>
-        <ul>
-          {/* List component
-      <RecipeIngredients */}
-          <li>list of ingredients</li>
-          <li>{item.ingredients}</li>
-        </ul>
-      </div>
-    );
-  });
-
   return (
     <div>
       <h1>Recipes</h1>
-      {recipeList}
+      {recipes.map((item) => (
+        <div key={item.id}>
+          <h2>{item.name}</h2>
+
+          <ul>
+            {/* List component
+      <RecipeIngredients */}
+            {item.ingredients.map((x) => (
+              <li>{x}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   );
 }
